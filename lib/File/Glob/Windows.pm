@@ -8,7 +8,7 @@ use DirHandle;
 use Exporter;
 use Carp;
 
-our $VERSION="0.1.2";
+our $VERSION="0.1.3";
 
 our @ISA = qw(Exporter);
 our @EXPORT = qw( glob );
@@ -176,6 +176,20 @@ current working directory means current directory on current drive.
 It differs from perlglob.exe, this glob can include the wild-card specification also in the middle part of path.
 
 =back
+
+=head1 INSTALL
+
+ perl Makefile.PL
+ nmake
+ nmake test
+ nmake install
+
+Notice: If you have no B<make>, automatically old B<nmake.exe> is downloaded from site of Microsoft, 
+http://download.microsoft.com/download/vc15/Patch/1.52/W95/EN-US/Nmake15.exe or ftp://ftp.microsoft.com/Softlib/MSLFILES/Nmake15.exe
+to same path of perl. You can check nmake install path by:
+
+ perl -e "print $^X"
+
 
 =head1 FUNCTIONS
 

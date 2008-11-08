@@ -1,5 +1,8 @@
 Revision history for File-Glob-Windows
 
+0.1.3 08/11/08(土) 15:51:20
+	change builder from Module::Build to Module::Install and check how it works on Windows.
+
 0.1.2 08/11/08(土) 14:05:35
       fix permission of files.
       Seems I cannot use windows to make package that acceptable by windows?
