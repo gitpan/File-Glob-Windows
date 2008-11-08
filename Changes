@@ -1,5 +1,9 @@
 Revision history for File-Glob-Windows
 
-0.0.1  Sat Nov  8 11:15:41 2008
-       Initial release.
+0.1.2 08/11/08(土) 14:05:35
+      fix permission of files.
+      Seems I cannot use windows to make package that acceptable by windows?
+
+0.1.1  08/11/08(土) 14:05:30
+      Initial release.
 

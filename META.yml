@@ -1,6 +1,6 @@
 ---
 name: File-Glob-Windows
-version: 0.1.1
+version: 0.1.2
 author:
   - 'tateisu <tateisu@gmail.com>'
 abstract: glob routine for Windows environment.
@@ -8,13 +8,8 @@ license: perl
 requires:
   Test::More: 0
   version: 0
-generated_by: Module::Build version 0.3
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
 provides:
   File::Glob::Windows:
     file: lib/File/Glob/Windows.pm
-    version: 0.1.1
-resources:
-  license: http://dev.perl.org/licenses/
+    version: 0.1.2
+generated_by: Module::Build version 0.26

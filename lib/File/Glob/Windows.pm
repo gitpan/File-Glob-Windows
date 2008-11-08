@@ -8,7 +8,7 @@ use DirHandle;
 use Exporter;
 use Carp;
 
-our $VERSION="0.1.1";
+our $VERSION="0.1.2";
 
 our @ISA = qw(Exporter);
 our @EXPORT = qw( glob );
@@ -197,7 +197,7 @@ This function detect current ANSI Codepage and returrns string such as "cpNNNNNN
 
 =head2 getCodePage_A(), getCodePage_B()
 
-These function has different implement to get current codepage.
+These functions are different implement to get current codepage.
 
 =head1 OPTIONS
 
@@ -235,18 +235,17 @@ B<other>: no sort
 
 =over
 
-=item 0
+=item
 
-	case sensitive
-	
-=item 1
+B<0>: case sensitive
 
-	ignore case
+=item
+
+B<1>: ignore case
 
 =back
 
 default is 1.
-
 
 =head1 SEE ALSO
 

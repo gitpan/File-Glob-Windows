@@ -1,45 +1,74 @@
-File-Glob-Windows version 0.0.1
+NAME
+    File::Glob::Windows - glob routine for Windows environment.
 
-[ REPLACE THIS...
+SYNOPSIS
+      use File::Glob::Windows;
+  
+      @list = glob($path);
+  
+      {
+          local $File::Glob::Windows::encoding = getCodePage();
+          local $File::Glob::Windows::sorttype = 0;
+          local $File::Glob::Windows::nocase   = 1;
+          @list = glob($path);
+      }
 
-  The README is used to introduce the module and provide instructions on
-  how to install the module, any machine dependencies it may have (for
-  example C compilers and installed libraries) and any other information
-  that should be understood before the module is installed.
+DESCRIPTION
+    This glob routines works correctly on Windows environment.
 
-  A README file is required for CPAN modules since CPAN extracts the
-  README file from a module distribution so that people browsing the
-  archive can use it get an idea of the modules uses. It is usually a
-  good idea to provide version information here so that people can
-  decide whether fixes for the module are worth downloading.
-]
+    *   Recognize system's current codepage such as 'cp932', It's multibyte
+        character contains '\\' and '/' and '*' and '?' in second byte.
 
+    *   Correctly handles current drive and currend cirectory. MS-DOS
+        derived environments has current directory for each drive. current
+        working directory means current directory on current drive. 'G:'
+        means 'G:.' , not 'G:\'.
 
-INSTALLATION
+    *   It differs from perlglob.exe, this glob can include the wild-card
+        specification also in the middle part of path.
 
-To install this module, run the following commands:
+FUNCTIONS
+  glob( $path [,$enc [,\%options]);
+    This function returns array of path that matches to specified *$path*.
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+    Third argument is reference of hash that indicate glob option.
 
-Alternatively, to install with Module::Build, you can use the following commands:
+   meta characters in path spec
+     *   Match any string of characters
+     ?   Match any single character
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+  getCodePage()
+    This function detect current ANSI Codepage and returrns string such as
+    "cpNNNNNN";
 
+  getCodePage_A(), getCodePage_B()
+    These functions are different implement to get current codepage.
 
-DEPENDENCIES
+OPTIONS
+   $File::Glob::Windows::encoding
+    Encoding of current codepage of OS.
 
-None.
+   $File::Glob::Windows::sorttype
+    *   1: sort by name.
 
+    *   2: sort by directory,name
 
-COPYRIGHT AND LICENCE
+    *   3: sort by file,name
 
-Copyright (C) 2008, tateisu
+    *   4: sort by name descent.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+    *   other: no sort
+
+   $File::Glob::Windows::nocase
+    *   0: case sensitive
+
+    *   1: ignore case
+
+    default is 1.
+
+SEE ALSO
+    perlglob, File::DosGlob, File::Glob
+
+AUTHOR
+    tateisu <tateisu@gmail.com>
+

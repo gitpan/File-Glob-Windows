@@ -6,8 +6,11 @@ use utf8;
 use Encode;
 use Test::More  qw(no_plan);
 
-
-plan skip_all => "please test this on windows" if not $^O =~ /Win/;
+if( not $^O =~ /Win/ ){
+	warn "this test for windows environment.\n";
+	ok(1);
+	exit;
+}
 
 our $os_encoding = getCodePage();
 binmode $_,":encoding($os_encoding)" for \*STDOUT,\*STDERR; 
