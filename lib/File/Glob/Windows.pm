@@ -8,7 +8,7 @@ use DirHandle;
 use Exporter;
 use Carp;
 
-our $VERSION="0.1.3";
+our $VERSION="0.1.4";
 
 our @ISA = qw(Exporter);
 our @EXPORT = qw( glob );
@@ -32,8 +32,28 @@ sub getCodePage_B{
 	my $v= $f->Call; $v and return "cp$v";
 	return;
 }
+
+sub getCodePage_POSIX {
+        require POSIX;
+        my $v = POSIX::setlocale( &POSIX::LC_CTYPE );
+    #~ LC_TYPE returns
+    #~    English_United States.1252
+    #~ which matches ...Control/Nls/CodePage
+    #~    (default)=(value  not set)
+    #~     ACP=1252
+    #~     OEMCP=437
+        return "cp$1" if defined($v) and $v=~/(\d+)$/;
+        return;
+}
+
+
 sub getCodePage{
-	return getCodePage_B;
+	for( \&getCodePage_B,\&getCodePage_A,\&getCodePage_POSIX ){
+		my $cp = eval{ &$_ };
+		next if $@;
+		$cp and return $cp;
+	}
+	return;
 }
 
 ##############################################
