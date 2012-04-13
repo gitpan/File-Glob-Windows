@@ -7,12 +7,13 @@ use Encode;
 use DirHandle;
 use Exporter;
 use Carp;
+use 5.005;
 
-our $VERSION="0.1.4";
+our $VERSION="0.1.5";
 
 our @ISA = qw(Exporter);
 our @EXPORT = qw( glob );
-our @EXPORT_OK = qw( glob getCodePage getCodePage_A getCodePage_B );
+our @EXPORT_OK = qw( glob getCodePage getCodePage_A getCodePage_B getCodePage_POSIX);
 
 ##############################################
 # find native encoding
@@ -204,12 +205,14 @@ It differs from perlglob.exe, this glob can include the wild-card specification 
  nmake test
  nmake install
 
-Notice: If you have no B<make>, automatically old B<nmake.exe> is downloaded from site of Microsoft, 
+Notice: If you have no B<make>, and also your OS is 32bit Windows, automatically old B<nmake.exe> is downloaded from site of Microsoft, 
 http://download.microsoft.com/download/vc15/Patch/1.52/W95/EN-US/Nmake15.exe or ftp://ftp.microsoft.com/Softlib/MSLFILES/Nmake15.exe
 to same path of perl. You can check nmake install path by:
 
  perl -e "print $^X"
 
+Notice: If your Windows OS is 64bit, you may get nmake.exe manually.
+please find "Windows® Server 2003 SP1 Platform SDK" and also "PSDK-amd64.exe".
 
 =head1 FUNCTIONS
 
@@ -229,7 +232,7 @@ Third argument is reference of hash that indicate glob option.
 
 This function detect current ANSI Codepage and returrns string such as "cpNNNNNN";
 
-=head2 getCodePage_A(), getCodePage_B()
+=head2 getCodePage_A(), getCodePage_B(),getCodePage_POSIX()
 
 These functions are different implement to get current codepage.
 

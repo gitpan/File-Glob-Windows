@@ -1,16 +1,15 @@
 use inc::Module::Install;
+
 name 'File-Glob-Windows';
+author 'tateisu <tateisu@gmail.com>';
+license 'perl';
+all_from 'lib/File/Glob/Windows.pm';
 
 perl_version '5.8.3';
-license 'perl';
-author 'tateisu <tateisu@gmail.com>';
-
-all_from 'lib/File/Glob/Windows.pm';
 test_requires 'Test::More';
+test_requires 'Test::Base';
 
-use_test_base;
 auto_include_deps;
 check_nmake;
-author_tests('xt');
-
+author_tests('xt'); # with Module::Install::AuthorTests 
 WriteAll;

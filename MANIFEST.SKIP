@@ -2,8 +2,10 @@
 \.log$
 \.bak$
 \.old$
+\.tar.gz$
 
-^blib
 ^Makefile$
 ^pm_to_blib
 ^[^/]*\d/
+~$
+^blib/

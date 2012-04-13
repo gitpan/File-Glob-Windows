@@ -1,5 +1,10 @@
 Revision history for File-Glob-Windows
 
+0.1.5 2012/04/13(Fri) 14:52
+
+    fix [rt.cpan.org #76241]
+	add installation notice about 64bit nmake.exe to POD.
+
 0.1.4 09/10/06(Tue) 19:59:36
 	import patch from [rt.cpan.org #49514] sub File::Glob::Windows::getCodePage_POSIX 
 
